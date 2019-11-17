@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+} 
+h1, h2 {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+.form-full-width {
+    width: 100%;
+}
+.search-container {
+    margin-bottom: 30px;
+}
+tr.mat-footer-row, tr.mat-row {
+    height: 70px;
+}
