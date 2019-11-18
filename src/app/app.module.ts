@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatTableModule, MatCardModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatTableModule, MatCardModule, MatInputModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule } from '@angular/material';
 
 import { NgModule } from '@angular/core';
 
@@ -26,9 +26,11 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatIconModule,
     MatTableModule,
+    MatDatepickerModule,
     MatCardModule,
     MatInputModule,
     MatSelectModule,
+    MatNativeDateModule,
     HttpClientModule,
     FormsModule
   ],

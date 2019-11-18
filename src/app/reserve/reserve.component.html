@@ -1,0 +1,51 @@
+<mat-card class="reserve-container">
+    <mat-card-content>
+
+        <h1>Make a reservation</h1>
+
+        <form class="reserve-form" #myform="ngForm" (ngSubmit)="makeReservation(myform)">
+
+            <h4>Full name</h4>
+            <mat-form-field class="form-full-width">
+                <mat-label>Full name</mat-label>
+                <input name="fullName" id="fullName" matInput placeholder="Full name" value="" required ngModel
+                    class="form-full-width" />
+            </mat-form-field>
+
+            <h4>Contact number</h4>
+            <mat-form-field class="form-full-width">
+                <mat-label>Full name</mat-label>
+                <input name="contact" id="contact" matInput placeholder="Contact number" value="" required ngModel
+                    class="form-full-width" />
+            </mat-form-field>
+
+            <h4>Address</h4>
+            <mat-form-field class="form-full-width">
+                <mat-label>Address</mat-label>
+                <input name="address" id="address" matInput placeholder="Your address" value="" required ngModel
+                    class="form-full-width" />
+            </mat-form-field>
+
+            <h4>Pickup date</h4>
+            <mat-form-field class="form-full-width">
+                <input name="pickupDate" id="pickupDate" matInput [matDatepicker]="pickupDate"
+                    placeholder="Choose the pickup date" class="form-full-width" required ngModel>
+                <mat-datepicker-toggle matSuffix [for]="pickupDate"></mat-datepicker-toggle>
+                <mat-datepicker #pickupDate></mat-datepicker>
+            </mat-form-field>
+
+            <h4>Dropoff date</h4>
+            <mat-form-field class="form-full-width">
+                <input name="dropoffDate" id="dropoffDate" matInput [matDatepicker]="dropoffDate"
+                    placeholder="Choose the dropoff date" class="form-full-width" required ngModel>
+                <mat-datepicker-toggle matSuffix [for]="dropoffDate"></mat-datepicker-toggle>
+                <mat-datepicker #dropoffDate></mat-datepicker>
+            </mat-form-field>
+
+            <br><br>
+            <button mat-raised-button (click)="checkAvailability(myform); $event.preventDefault()">Check
+                Availability</button>&nbsp;
+            <button mat-raised-button color="primary" type="submit">Make reservation</button>
+        </form>
+    </mat-card-content>
+</mat-card>
