@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ReserveComponent } from './reserve/reserve.component';
-
+import { ReserveComponent, PopupAlertDialog } from './reserve/reserve.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'reserve', component: ReserveComponent }
+  { path: 'reserve/:plateNumber', component: ReserveComponent }
 ];
 
 @NgModule({
@@ -14,4 +13,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [HomeComponent, ReserveComponent];
+export const routingComponents = [HomeComponent, ReserveComponent, PopupAlertDialog];
+export const entryComponents = [PopupAlertDialog];

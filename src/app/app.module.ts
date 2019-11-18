@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatTableModule, MatCardModule, MatInputModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatTableModule, MatCardModule, MatInputModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule, MatDialogModule } from '@angular/material';
 
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { AppRoutingModule, routingComponents, entryComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -31,10 +31,12 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     MatNativeDateModule,
+    MatDialogModule,
     HttpClientModule,
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: entryComponents
 })
 export class AppModule { }

@@ -4,7 +4,6 @@
         <h1>Make a reservation</h1>
 
         <form class="reserve-form" #myform="ngForm" (ngSubmit)="makeReservation(myform)">
-
             <h4>Full name</h4>
             <mat-form-field class="form-full-width">
                 <mat-label>Full name</mat-label>
@@ -14,7 +13,7 @@
 
             <h4>Contact number</h4>
             <mat-form-field class="form-full-width">
-                <mat-label>Full name</mat-label>
+                <mat-label>Contact number</mat-label>
                 <input name="contact" id="contact" matInput placeholder="Contact number" value="" required ngModel
                     class="form-full-width" />
             </mat-form-field>
