@@ -12,9 +12,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 
 export class ReserveComponent implements OnInit {
 
-  plateNumber: string;
-
   constructor(private httpService: HttpClient, private route: ActivatedRoute, private dialog: MatDialog) { }
+
+  plateNumber: string;
 
   ngOnInit() {
     this.plateNumber = this.route.snapshot.paramMap.get("plateNumber") || "";
@@ -23,8 +23,6 @@ export class ReserveComponent implements OnInit {
 
   makeReservation(form) {
     console.log("Make reservation");
-    console.log(form.value);
-
     const body = {
       dateFrom: form.value.pickupDate || "",
       dateTo: form.value.dropoffDate || "",
@@ -32,7 +30,6 @@ export class ReserveComponent implements OnInit {
       contactNumber: form.value.contact || "",
       address: form.value.address || ""
     };
-
     this.httpService.post(`http://localhost:3000/bookings/${this.plateNumber}`, body).subscribe(
       data => {
         let jsonStr = JSON.stringify(data);
@@ -50,13 +47,10 @@ export class ReserveComponent implements OnInit {
 
   checkAvailability(form) {
     console.log("Check availability");
-    console.log(form.value);
-
     const body = {
       dateFrom: form.value.pickupDate || "",
       dateTo: form.value.dropoffDate || ""
     };
-
     this.httpService.post(`http://localhost:3000/bookings/${this.plateNumber}/isBooked`, body).subscribe(
       data => {
         let jsonStr = JSON.stringify(data);
@@ -76,7 +70,6 @@ export class ReserveComponent implements OnInit {
       width: '350px',
       data: { message: message, description: description }
     });
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
@@ -92,6 +85,7 @@ export interface DialogData {
 @Component({
   selector: 'alert-dialog',
   templateUrl: 'alert-dialog.html',
+  styleUrls: ['./alert-dialog.css']
 })
 
 export class PopupAlertDialog {
