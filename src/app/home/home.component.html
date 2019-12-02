@@ -54,8 +54,10 @@
 
     <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef width="20%"> Action </th>
-        <td mat-cell *matCellDef="let element"> <a mat-raised-button color="primary"
-                href="/reserve/{{element.plateNumber}}">Reserve</a></td>
+        <td mat-cell *matCellDef="let element">
+            <a mat-raised-button color="primary" href="/reserve/{{element.plateNumber}}">Reserve</a>&nbsp;
+            <a mat-raised-button color="primary" href="/bookings/{{element.plateNumber}}">View bookings</a>
+        </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

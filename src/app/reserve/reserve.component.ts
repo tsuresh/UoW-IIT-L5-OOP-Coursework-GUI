@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from "@angular/router";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-reserve',
@@ -24,13 +25,14 @@ export class ReserveComponent implements OnInit {
   makeReservation(form) {
     console.log("Make reservation");
     const body = {
-      dateFrom: form.value.pickupDate || "",
-      dateTo: form.value.dropoffDate || "",
+      plateNumber: this.plateNumber || "",
+      dateFrom: new DatePipe('en').transform(form.value.pickupDate, 'dd/MM/yyyy') || "",
+      dateTo: new DatePipe('en').transform(form.value.dropoffDate, 'dd/MM/yyyy') || "",
       fullName: form.value.fullName || "",
       contactNumber: form.value.contact || "",
       address: form.value.address || ""
     };
-    this.httpService.post(`http://localhost:3000/bookings/${this.plateNumber}`, body).subscribe(
+    this.httpService.post('http://localhost:8080/api/v1/bookings', body).subscribe(
       data => {
         let jsonStr = JSON.stringify(data);
         let jsonData = JSON.parse(jsonStr);
@@ -48,10 +50,11 @@ export class ReserveComponent implements OnInit {
   checkAvailability(form) {
     console.log("Check availability");
     const body = {
-      dateFrom: form.value.pickupDate || "",
-      dateTo: form.value.dropoffDate || ""
+      plateNumber: this.plateNumber || "",
+      dateFrom: new DatePipe('en').transform(form.value.pickupDate, 'dd/MM/yyyy') || "",
+      dateTo: new DatePipe('en').transform(form.value.dropoffDate, 'dd/MM/yyyy') || ""
     };
-    this.httpService.post(`http://localhost:3000/bookings/${this.plateNumber}/isBooked`, body).subscribe(
+    this.httpService.post('http://localhost:8080/api/v1/bookings/isBooked', body).subscribe(
       data => {
         let jsonStr = JSON.stringify(data);
         let jsonData = JSON.parse(jsonStr);

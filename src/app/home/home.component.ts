@@ -26,7 +26,6 @@ export class HomeComponent {
   displayedColumns: string[] = ['plateNumber', 'make', 'model', 'dayRental', 'type', 'action'];
   dataSource: PeriodicElement[] = [];
 
-
   constructor(private httpService: HttpClient) { }
 
   search(form) {
@@ -75,13 +74,13 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.httpService.get('http://localhost:3000/vehicles').subscribe(
+    this.httpService.get('http://localhost:8080/api/v1/vehicles').subscribe(
       data => {
         //this.dataSource = data as PeriodicElement[];	 // FILL THE ARRAY WITH DATA.
         //  console.log(this.arrBirds[1]);
         let jsonStr = JSON.stringify(data);
         let jsonData = JSON.parse(jsonStr);
-        vehicles = jsonData.vehicles.map(vehicle => {
+        vehicles = jsonData.map(vehicle => {
           return {
             plateNumber: vehicle.plateNo,
             make: vehicle.make,
