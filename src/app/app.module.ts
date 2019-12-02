@@ -10,17 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { UpdatebookingComponent } from './updatebooking/updatebooking.component';
-import { UpdateBookingComponent } from './update-booking/update-booking.component';
-import { AvailableComponent } from './available/available.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents,
-    UpdatebookingComponent,
-    UpdateBookingComponent,
-    AvailableComponent
+    routingComponents
   ],
   imports: [
     BrowserModule,
