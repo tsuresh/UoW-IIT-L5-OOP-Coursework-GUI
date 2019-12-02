@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+}
+h1, h2 {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+tr.mat-footer-row, tr.mat-row {
+    height: 70px;
+}
+.search-container {
+    margin-bottom: 30px;
+}

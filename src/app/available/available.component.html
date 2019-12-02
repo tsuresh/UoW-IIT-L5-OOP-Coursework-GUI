@@ -1,0 +1,67 @@
+<mat-card class="search-container">
+    <mat-card-content>
+        <form class="search-form" #myform="ngForm" (ngSubmit)="search(myform)">
+            <h4>Search</h4>
+
+            <h4>Pickup date</h4>
+            <mat-form-field class="form-full-width">
+                <input name="pickupDate" id="pickupDate" matInput [matDatepicker]="pickupDate"
+                    placeholder="Choose the pickup date" class="form-full-width" required ngModel>
+                <mat-datepicker-toggle matSuffix [for]="pickupDate"></mat-datepicker-toggle>
+                <mat-datepicker #pickupDate></mat-datepicker>
+            </mat-form-field>
+
+            <h4>Dropoff date</h4>
+            <mat-form-field class="form-full-width">
+                <input name="dropoffDate" id="dropoffDate" matInput [matDatepicker]="dropoffDate"
+                    placeholder="Choose the dropoff date" class="form-full-width" required ngModel>
+                <mat-datepicker-toggle matSuffix [for]="dropoffDate"></mat-datepicker-toggle>
+                <mat-datepicker #dropoffDate></mat-datepicker>
+            </mat-form-field>
+
+            <br>
+
+            <button mat-raised-button (click)="clearSearch(myform); $event.preventDefault()">Clear Search</button>&nbsp;
+            <button mat-raised-button color="primary" type="submit">Search</button>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="plateNumber">
+        <th mat-header-cell *matHeaderCellDef width="16%"> Plate number </th>
+        <td mat-cell *matCellDef="let element"> {{element.plateNumber}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="make">
+        <th mat-header-cell *matHeaderCellDef width="16%"> Make </th>
+        <td mat-cell *matCellDef="let element"> {{element.make}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="model">
+        <th mat-header-cell *matHeaderCellDef width="16%"> Model </th>
+        <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dayRental">
+        <th mat-header-cell *matHeaderCellDef width="16%"> Day rental </th>
+        <td mat-cell *matCellDef="let element"> {{element.dayRental}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef width="16%"> Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef width="20%"> Action </th>
+        <td mat-cell *matCellDef="let element">
+            <a mat-raised-button color="primary" href="/reserve/{{element.plateNumber}}">Reserve</a>&nbsp;
+            <a mat-raised-button color="primary" href="/bookings/{{element.plateNumber}}">View bookings</a>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
